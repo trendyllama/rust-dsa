@@ -3,16 +3,52 @@
 use dsa::{ add, subtract };
 use dsa::node::Node;
 
+use clap::Parser;
+
+/// Simple program to greet a person
+#[derive(Parser, Debug)]
+#[command(version, about, long_about = None)]
+struct Args {
+    #[arg(long)]
+    hello_world: bool,
+
+    #[arg(short, long)]
+    add: bool,
+
+    #[arg(short, long)]
+    subtract: bool,
+
+    #[arg(short, long)]
+    node: bool,
+
+}
+
 fn main() {
 
-    let node = Node::new(5);
+    let args = Args::parse();
 
-    println!("Node value: {}", node.value);
+    if args.hello_world {
+        println!("Hello, world!");
+    }
 
-    let result = add(2, 3);
-    let sub_result = subtract(2, 3);
+    if args.add {
+        println!("Adding numbers");
+        let result = add(2, 3);
+        println!("The sum of 2 and 3 is: {}", result);
+    }
 
-    println!("The sum of 2 and 3 is: {}", result);
-    println!("The difference of 2 and 3 is: {}", sub_result);
-    println!("Hello, world!");
+    if args.subtract {
+        println!("Subtracting numbers");
+        let sub_result = subtract(2, 3);
+        println!("The difference of 2 and 3 is: {}", sub_result);
+    }
+
+
+    if args.node {
+        println!("Creating a node");
+        let node = Node::new(5, None);
+        println!("Node value: {}", node.value);
+    }
+
+
 }

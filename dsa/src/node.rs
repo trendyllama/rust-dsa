@@ -7,10 +7,18 @@ pub struct Node<T> {
 }
 
 impl<T> Node<T> {
-    pub fn new(value: T) -> Self {
+    pub fn new(value: T, next: Option<Box<Node<T>>>) -> Self {
+
+        if next.is_none() {
+            return Node {
+                value,
+                next: None,
+            }
+        }
+
         Node {
             value,
-            next: None,
+            next,
         }
     }
 }
@@ -21,7 +29,7 @@ mod tests {
 
     #[test]
     fn test_node_creation() {
-        let node = Node::<i32>::new(5);
+        let node = Node::<i32>::new(5, None);
         assert_eq!(node.value, 5);
         assert!(node.next.is_none());
     }

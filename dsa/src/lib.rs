@@ -1,4 +1,3 @@
-
 pub mod node;
 pub mod stack;
 
@@ -9,10 +8,6 @@ pub fn add(left: i32, right: i32) -> i32 {
 pub fn subtract(left: i32, right: i32) -> i32 {
     left - right
 }
-
-
-
-
 
 #[cfg(test)]
 mod tests {

@@ -1,7 +1,6 @@
-
 // we had to add this library reference to the Cargo.toml file
-use dsa::{ add, subtract };
 use dsa::node::Node;
+use dsa::{add, subtract};
 
 use clap::Parser;
 
@@ -20,11 +19,9 @@ struct Args {
 
     #[arg(short, long)]
     node: bool,
-
 }
 
 fn main() {
-
     let args = Args::parse();
 
     if args.hello_world {
@@ -43,12 +40,9 @@ fn main() {
         println!("The difference of 2 and 3 is: {}", sub_result);
     }
 
-
     if args.node {
         println!("Creating a node");
         let node = Node::new(5, None);
         println!("Node value: {}", node.value);
     }
-
-
 }
